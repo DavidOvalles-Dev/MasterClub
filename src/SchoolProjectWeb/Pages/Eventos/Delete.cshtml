@@ -1,0 +1,56 @@
+@page
+@model SchoolProjectWeb.Pages_Eventos.DeleteModel
+
+<div class="container">
+    <h1 class="text-center mb-4">Eliminar Evento</h1>
+    <hr />
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg p-4 rounded">
+                <p class="lead text-center">¿Estás seguro de que deseas eliminar este evento?</p>
+
+                <dl class="row">
+                    <dt class="col-sm-4 font-weight-bold">Nombre del Evento:</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Evento.NombreEvento)</dd>
+
+                    <dt class="col-sm-4 font-weight-bold">Actividad:</dt>
+                    <dd class="col-sm-8">
+                        @if (Model.Evento.Actividad != null)
+                        {
+                            @Html.DisplayFor(model => model.Evento.Actividad.NombreActividad)
+                        }
+                        else
+                        {
+                            <span>No disponible</span>
+                        }
+                    </dd>
+
+                    <dt class="col-sm-4 font-weight-bold">Fecha:</dt>
+                    <dd class="col-sm-8">@Model.Evento.Fecha.ToString("yyyy-MM-dd HH:mm")</dd>
+
+                    <dt class="col-sm-4 font-weight-bold">Lugar:</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Evento.Lugar)</dd>
+
+                    <dt class="col-sm-4 font-weight-bold">Descripción:</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Evento.Descripcion)</dd>
+                </dl>
+
+                <div class="form-group mt-4 text-center">
+                    <form method="post" id="deleteForm">
+                        <input type="hidden" asp-for="Evento.Id" />
+                        <button type="button" class="btn btn-danger btn-lg" onclick="confirmDelete()">Eliminar Evento</button>
+                        <a asp-page="Index" class="btn btn-secondary btn-lg ml-3">Volver a la Lista</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function confirmDelete() {
+        if (confirm("¿Estás seguro de que quieres eliminar este evento?")) {
+            document.getElementById('deleteForm').submit();
+        }
+    }
+</script>

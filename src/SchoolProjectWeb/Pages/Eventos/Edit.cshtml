@@ -1,0 +1,50 @@
+@page
+@model SchoolProjectWeb.Pages_Eventos.EditModel
+
+<div class="container">
+    <h1 class="text-center mb-4">Editar Evento</h1>
+    <hr />
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form method="post" class="shadow-lg p-4 rounded bg-light">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                <input type="hidden" asp-for="Evento.Id" />
+
+                <div class="form-group">
+                    <label asp-for="Evento.NombreEvento" class="font-weight-bold">Nombre del Evento</label>
+                    <input asp-for="Evento.NombreEvento" class="form-control" />
+                    <span asp-validation-for="Evento.NombreEvento" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Evento.ActividadId" class="font-weight-bold">Actividad</label>
+                    <select asp-for="Evento.ActividadId" class="form-control" asp-items="ViewBag.ActividadId"></select>
+                    <span asp-validation-for="Evento.ActividadId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Evento.Fecha" class="font-weight-bold">Fecha del Evento</label>
+                    <input asp-for="Evento.Fecha" class="form-control" type="datetime-local" />
+                    <span asp-validation-for="Evento.Fecha" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Evento.Lugar" class="font-weight-bold">Lugar</label>
+                    <input asp-for="Evento.Lugar" class="form-control" />
+                    <span asp-validation-for="Evento.Lugar" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Evento.Descripcion" class="font-weight-bold">Descripción</label>
+                    <textarea asp-for="Evento.Descripcion" class="form-control" rows="4"></textarea>
+                    <span asp-validation-for="Evento.Descripcion" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mt-4 text-center">
+                    <button type="submit" class="btn btn-success btn-lg">Guardar Cambios</button>
+                    <a asp-page="Index" class="btn btn-secondary btn-lg ml-3">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

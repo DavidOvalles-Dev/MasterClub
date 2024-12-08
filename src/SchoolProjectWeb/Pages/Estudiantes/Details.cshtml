@@ -1,0 +1,45 @@
+@page
+@model SchoolProjectWeb.Pages_Estudiantes.DetailsModel
+@{
+    ViewData["Title"] = "Detalles del Miembro";
+}
+
+<h1 class="text-center display-4">Detalles del Miembro del Club</h1>
+<hr />
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg mb-4">
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-3 font-weight-bold">Nombre</dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.Estudiante.Nombre)
+                        </dd>
+
+                        <dt class="col-sm-3 font-weight-bold">Apellido</dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.Estudiante.Apellido)
+                        </dd>
+
+                        <dt class="col-sm-3 font-weight-bold">Categoría</dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.Estudiante.Grado)
+                        </dd>
+
+                        <dt class="col-sm-3 font-weight-bold">Fecha de Nacimiento</dt>
+                        <dd class="col-sm-9">
+                            @Model.Estudiante.FechaNacimiento.ToString("dd/MM/yyyy")
+                        </dd>
+                    </dl>
+
+                    <div class="form-group mt-4">
+                        <a asp-page="./Edit" asp-route-id="@Model.Estudiante.Id" class="btn btn-warning btn-lg">Editar Miembro</a>
+                        <a asp-page="./Index" class="btn btn-secondary btn-lg ml-3">Volver al Club</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

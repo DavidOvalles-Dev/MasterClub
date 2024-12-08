@@ -1,0 +1,96 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Página Principal";
+}
+
+<div class="container mt-5 pt-5">
+    <h1 class="display-4 text-center mb-4">Bienvenido al Administrador de actividades</h1>
+    <p class="text-center mb-4 text-muted">Gestiona y accede a las funcionalidades según tu rol.</p>
+
+    <!-- Fila de tarjetas con opciones -->
+    <div class="row justify-content-center">
+        @if (User.IsInRole("Administrador"))
+        {
+            <!-- Tarjeta para Actividades -->
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-lg border-light rounded-3">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-primary">Actividades</h5>
+                        <p class="card-text">Gestiona las actividades escolares disponibles.</p>
+                        <a href="/Actividades/Index" class="btn btn-primary w-100 py-2">Ver Actividades</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta para Estudiantes -->
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-lg border-light rounded-3">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-primary">Miembros</h5>
+                        <p class="card-text">Administra los registros de Miembros.</p>
+                        <a href="/Estudiantes/Index" class="btn btn-primary w-100 py-2">Ver Miembros</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta para Profesores -->
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-lg border-light rounded-3">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-primary">Entrenadores</h5>
+                        <p class="card-text">Gestiona la información de los Entrenadores.</p>
+                        <a href="/Profesores/Index" class="btn btn-primary w-100 py-2">Ver Entrenadores</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta para Eventos -->
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-lg border-light rounded-3">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-primary">Eventos</h5>
+                        <p class="card-text">Consulta y organiza eventos para la comunidad escolar.</p>
+                        <a href="/Eventos/Index" class="btn btn-primary w-100 py-2">Ver Eventos</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta para Inscripciones -->
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-lg border-light rounded-3">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-primary">Inscripciones</h5>
+                        <p class="card-text">Administra las inscripciones a actividades y eventos.</p>
+                        <a href="/Inscripciones/Index" class="btn btn-primary w-100 py-2">Ver Inscripciones</a>
+                    </div>
+                </div>
+            </div>
+
+
+        }
+        else
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-lg border-light rounded-3">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-primary">Inscripciones</h5>
+                        <p class="card-text">Inscríbete en las actividades disponibles.</p>
+                        <a href="/Inscripciones/Create" class="btn btn-success w-100 py-2">Inscribirse</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-lg border-light rounded-3">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-primary">Eventos</h5>
+                        <p class="card-text">Consulta y organiza eventos para la comunidad Deportiva.</p>
+                        <a href="/Eventos/Index" class="btn btn-primary w-100 py-2">Ver Eventos</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

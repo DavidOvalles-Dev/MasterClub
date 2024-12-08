@@ -1,0 +1,104 @@
+@page
+@model SchoolProjectWeb.Pages_Profesores.DeleteModel
+
+@{
+    ViewData["Title"] = "Eliminar Profesor";
+}
+
+<h1 class="text-center display-4">Eliminar Profesor</h1>
+<hr />
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg mb-4">
+                <div class="card-body">
+                    <p class="lead">¿Estás seguro de que quieres eliminar este profesor?</p>
+
+                    <dl class="row">
+                        <dt class="col-sm-3 font-weight-bold">Nombre</dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.Profesor.Nombre)
+                        </dd>
+
+                        <dt class="col-sm-3 font-weight-bold">Especialidad</dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.Profesor.Especialidad)
+                        </dd>
+                    </dl>
+
+                    <div class="form-group mt-4">
+                        <form method="post" id="deleteForm">
+                            <input type="hidden" asp-for="Profesor.Id" />
+                            <button type="submit" class="btn btn-danger btn-lg">Eliminar</button>
+                            <a asp-page="./Index" class="btn btn-secondary btn-lg ml-3">Volver a la Lista</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function confirmDelete() {
+        if (confirm("¿Estás seguro de que quieres eliminar este profesor?")) {
+            document.getElementById('deleteForm').submit();
+        }
+    }
+</script>
+
+<style>
+    .card {
+        border-radius: 15px;
+    }
+
+    .card-body {
+        padding: 30px;
+    }
+
+    .text-center {
+        color: #2a2a2a;
+        font-size: 2.5rem;
+    }
+
+    dt {
+        font-size: 1.1rem;
+        color: #495057;
+    }
+
+    dd {
+        font-size: 1.1rem;
+        color: #6c757d;
+    }
+
+    .btn {
+        font-size: 1.1rem;
+        padding: 12px 24px;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-danger:hover {
+        background-color: #dc3545;
+        border-color: #c82333;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+    }
+
+    .shadow-lg {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .row dd {
+        margin-bottom: 1rem;
+    }
+
+    .card-body dd {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+</style>

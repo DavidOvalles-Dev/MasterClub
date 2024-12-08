@@ -1,0 +1,32 @@
+@page
+@model SchoolProjectWeb.Pages_Profesores.EditModel
+
+<h1>Editar Profesor</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+            <input type="hidden" asp-for="Profesor.Id" />
+
+            <div class="form-group">
+                <label asp-for="Profesor.Nombre" class="control-label">Nombre</label>
+                <input asp-for="Profesor.Nombre" class="form-control" />
+                <span asp-validation-for="Profesor.Nombre" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Profesor.Especialidad" class="control-label">Especialidad</label>
+                <input asp-for="Profesor.Especialidad" class="form-control" />
+                <span asp-validation-for="Profesor.Especialidad" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-4">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+                <a asp-page="./Index" class="btn btn-secondary ml-2">Volver a la Lista</a>
+            </div>
+        </form>
+    </div>
+</div>

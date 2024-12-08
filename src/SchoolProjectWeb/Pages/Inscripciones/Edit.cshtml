@@ -1,0 +1,42 @@
+@page
+@model SchoolProjectWeb.Pages_Inscripciones.EditModel
+
+@{
+    ViewData["Title"] = "Editar Inscripción";
+}
+
+<h1>Editar Inscripción</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+            <input type="hidden" asp-for="Inscripcion.Id" />
+
+            <div class="form-group">
+                <label asp-for="Inscripcion.EstudianteId" class="control-label">Estudiante</label>
+                <select asp-for="Inscripcion.EstudianteId" class="form-control" asp-items="ViewBag.EstudianteId"></select>
+                <span asp-validation-for="Inscripcion.EstudianteId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Inscripcion.ActividadId" class="control-label">Actividad</label>
+                <select asp-for="Inscripcion.ActividadId" class="form-control" asp-items="ViewBag.ActividadId"></select>
+                <span asp-validation-for="Inscripcion.ActividadId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Inscripcion.FechaInscripcion" class="control-label">Fecha de Inscripción</label>
+                <input asp-for="Inscripcion.FechaInscripcion" class="form-control" type="date" />
+                <span asp-validation-for="Inscripcion.FechaInscripcion" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-4">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+                <a asp-page="./Index" class="btn btn-secondary ml-2">Volver a la Lista</a>
+            </div>
+        </form>
+    </div>
+</div>

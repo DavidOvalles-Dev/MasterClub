@@ -1,0 +1,50 @@
+@page
+@model SchoolProjectWeb.Pages_Inscripciones.CreateModel
+@{
+    ViewData["Title"] = "Crear Inscripción";
+}
+
+<h1>Crear Inscripción</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+            <!-- Campo Estudiante -->
+            <div class="form-group">
+                <label for="EstudianteId">Estudiante</label>
+                <select asp-for="Inscripcion.EstudianteId" class="form-control" asp-items="Model.Estudiantes"></select>
+                <span asp-validation-for="Inscripcion.EstudianteId" class="text-danger"></span>
+            </div>
+
+            <!-- Campo Actividad -->
+            <div class="form-group">
+                <label for="ActividadId">Actividad</label>
+                <select asp-for="Inscripcion.ActividadId" class="form-control" asp-items="Model.Actividades"></select>
+                <span asp-validation-for="Inscripcion.ActividadId" class="text-danger"></span>
+            </div>
+
+            <!-- Fecha Inscripción -->
+            <div class="form-group">
+                <label for="FechaInscripcion">Fecha de Inscripción</label>
+                <input asp-for="Inscripcion.FechaInscripcion" class="form-control" type="date" />
+                <span asp-validation-for="Inscripcion.FechaInscripcion" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Crear</button>
+
+                @if (User.IsInRole("Estudiante"))
+                {
+                    <a asp-page="/Eventos/Index" class="btn btn-secondary ml-3">Volver a Eventos</a>
+                }
+                else
+                {
+                    <a asp-page="Index" class="btn btn-secondary ml-3">Volver a la Lista</a>
+                }
+            </div>
+        </form>
+    </div>
+</div>

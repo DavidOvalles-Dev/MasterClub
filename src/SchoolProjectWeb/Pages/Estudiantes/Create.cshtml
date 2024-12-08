@@ -1,0 +1,43 @@
+@page
+@model SchoolProjectWeb.Pages.Estudiantes.CreateModel
+
+<h1>Registrar Miembro</h1>
+<h4>Club Deportivo</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Estudiante.Nombre" class="control-label">Nombre del Miembro</label>
+                <input asp-for="Estudiante.Nombre" class="form-control" maxlength="15" />
+                <span asp-validation-for="Estudiante.Nombre" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Estudiante.Apellido" class="control-label">Apellido del Miembro</label>
+                <input asp-for="Estudiante.Apellido" class="form-control" maxlength="15" />
+                <span asp-validation-for="Estudiante.Apellido" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Estudiante.Grado" class="control-label">Categoría</label>
+                <input asp-for="Estudiante.Grado" class="form-control" />
+                <span asp-validation-for="Estudiante.Grado" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Estudiante.FechaNacimiento" class="control-label">Fecha de Nacimiento</label>
+                <input asp-for="Estudiante.FechaNacimiento" class="form-control" type="date" />
+                <span asp-validation-for="Estudiante.FechaNacimiento" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-4">
+                <button type="submit" class="btn btn-primary">Registrar Miembro</button>
+                <a asp-page="Index" class="btn btn-secondary ml-2">Volver al Club</a>
+            </div>
+        </form>
+    </div>
+</div>

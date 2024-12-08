@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SchoolProjectWeb</title>
+
+    <!-- Enlaces a los estilos -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap5.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SchoolProjectWeb.styles.css" asp-append-version="true" />
+</head>
+<body class="bg-light">
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-md fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand text-primary" href="/">ClubProyect</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <!-- Sección Estudiantes, visible solo para estudiantes -->
+                    @if (User.IsInRole("Estudiante"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="studentDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Miembros
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="studentDropdown">
+                                <li><a class="dropdown-item" href="/Eventos">Ver Eventos</a></li>
+                                <li><a class="dropdown-item" href="/Inscripciones/Create">Inscribirse en Eventos</a></li>
+                            </ul>
+                        </li>
+                    }
+
+                    <!-- Sección Administración, visible solo para administradores -->
+                    @if (User.IsInRole("Administrador"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Administración
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                                <li><a class="dropdown-item" href="/Actividades">Ver Actividades</a></li>
+                                <li><a class="dropdown-item" href="/Estudiantes">Ver Miembros</a></li>
+                                <li><a class="dropdown-item" href="/Profesores">Ver Profesores</a></li>
+                                <li><a class="dropdown-item" href="/Eventos">Ver Eventos</a></li>
+                                <li><a class="dropdown-item" href="/Inscripciones">Inscripciones</a></li>
+                            </ul>
+                        </li>
+                    }
+                </ul>
+
+                <!-- Sección para mostrar el nombre del usuario -->
+                <ul class="navbar-nav ms-auto">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item d-flex align-items-center">
+                            <span class="navbar-text text-dark me-3">
+                                @User.Identity.Name, ¡Bienvenido!
+                            </span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" href="/Identity/Account/Logout">Cerrar Sesión</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-primary" href="/Identity/Account/Login">Iniciar Sesión</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-primary" href="/Identity/Account/Register">Registrarse</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenedor principal -->
+    <div class="container mt-5 pt-5">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Pie de página -->
+    <footer class="footer text-muted bg-dark py-3 mt-5">
+        <div class="container text-center text-light">
+            <span>&copy; 2024 - SchoolProjectWeb</span> | <a href="/Privacy" class="text-decoration-none text-light">Privacy</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

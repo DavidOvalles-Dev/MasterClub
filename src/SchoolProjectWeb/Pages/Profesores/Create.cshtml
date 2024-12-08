@@ -1,0 +1,31 @@
+@page
+@model SchoolProjectWeb.Pages_Profesores.CreateModel
+
+<h1>Registrar Entrenador</h1>
+<h4>Entrenador</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Profesor.Nombre" class="control-label"></label>
+                <input asp-for="Profesor.Nombre" class="form-control" maxlength="50" />
+                <span asp-validation-for="Profesor.Nombre" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Profesor.Especialidad" class="control-label"></label>
+                <input asp-for="Profesor.Especialidad" class="form-control" maxlength="50" />
+                <span asp-validation-for="Profesor.Especialidad" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-4">
+                <button type="submit" class="btn btn-primary">Registrar</button>
+                <a asp-page="Index" class="btn btn-secondary ml-2">Volver a la Lista</a>
+            </div>
+        </form>
+    </div>
+</div>

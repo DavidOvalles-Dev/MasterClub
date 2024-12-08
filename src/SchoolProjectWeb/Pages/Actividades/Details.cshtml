@@ -1,0 +1,101 @@
+@page
+@model SchoolProjectWeb.Pages.Actividades.DetailsModel
+
+@{
+    ViewData["Title"] = "Detalles de la Actividad";
+}
+
+<h1 class="text-center display-4">Detalles de la Actividad</h1>
+<hr />
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg mb-4">
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-3 font-weight-bold">Nombre de la actividad</dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.Actividad.NombreActividad)
+                        </dd>
+
+                        <dt class="col-sm-3 font-weight-bold">Descripción</dt>
+                        <dd class="col-sm-9" style="word-wrap: break-word; overflow-wrap: break-word;">
+                            @Html.DisplayFor(model => model.Actividad.Descripcion)
+                        </dd>
+
+                        <dt class="col-sm-3 font-weight-bold">Cupo Máximo</dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.Actividad.CupoMaximo)
+                        </dd>
+
+                        <dt class="col-sm-3 font-weight-bold">Profesor encargado</dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.Actividad.Profesor.Nombre)
+                        </dd>
+                    </dl>
+
+                    <div class="form-group mt-4">
+                        <a asp-page="./Edit" asp-route-id="@Model.Actividad.Id" class="btn btn-warning btn-lg">Editar</a>
+                        <a asp-page="./Index" class="btn btn-secondary btn-lg ml-3">Volver a la Lista</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        border-radius: 15px;
+    }
+
+    .card-body {
+        padding: 30px;
+    }
+
+    .text-center {
+        color: #2a2a2a;
+        font-size: 2.5rem;
+    }
+
+    dt {
+        font-size: 1.1rem;
+        color: #495057;
+    }
+
+    dd {
+        font-size: 1.1rem;
+        color: #6c757d;
+    }
+
+    .btn {
+        font-size: 1.1rem;
+        padding: 12px 24px;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-warning:hover {
+        background-color: #e0a800;
+        border-color: #d39e00;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+    }
+
+    .shadow-lg {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .row dd {
+        margin-bottom: 1rem;
+    }
+
+    .card-body dd {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+</style>
